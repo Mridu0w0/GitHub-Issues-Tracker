@@ -31,7 +31,7 @@ const filterIssues = (filterType) => {
     const activeClass = "bg-[#4B00FF] text-white px-6 py-1.5 rounded-md text-sm font-medium transition-colors";
     const inactiveClass = "text-gray-600 hover:bg-gray-50 px-6 py-1.5 rounded-md text-sm font-medium border border-transparent hover:border-gray-200 transition-colors";
 
-t
+
     btnAll.className = inactiveClass;
     btnOpen.className = inactiveClass;
     btnClosed.className = inactiveClass;
