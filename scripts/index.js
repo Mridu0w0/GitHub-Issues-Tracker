@@ -109,19 +109,18 @@ const displayIssues = (issues) => {
         card.className = `border border-gray-200 rounded-lg p-4 border-t-4 ${borderColor} flex flex-col hover:shadow-md transition-shadow bg-white`;
         
         card.innerHTML = `
-            <div class="flex justify-between items-center mb-3">
-                <svg class="w-5 h-5 ${iconColor}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    ${isClosed 
-                        ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>' 
-                        : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>'}
-                </svg>
+<div class="flex justify-between items-center mb-3">
+                ${isClosed 
+                    ? '<img src="../assets/Closed- Status .png" alt="Closed" class="w-5 h-5">' 
+                    : '<img src="../assets/Open-Status.png" alt="Open" class="w-5 h-5">'
+                }
                 ${priorityBadge}
             </div>
             <h3 class="font-bold text-gray-900 text-sm mb-2">${title}</h3>
             <p class="text-xs text-gray-500 mb-4 line-clamp-2">${desc}</p>
             <div class="flex gap-2 mb-4 text-[10px] font-semibold flex-wrap">
-                <span class="px-2 py-1 rounded-full border border-[#ff8182] text-[#cf222e] flex items-center gap-1">🐞 BUG</span>
-                <span class="px-2 py-1 rounded-full border border-[#d4a72c] text-[#9a6700] flex items-center gap-1">🤝 HELP WANTED</span>
+                <span class="px-2 py-1 rounded-full border border-[#ff8182] text-[#cf222e] flex items-center gap-1 bg-[#FEECEC]"><i class="fa-solid fa-bug"></i> BUG</span>
+                <span class="px-2 py-1 rounded-full border border-[#d4a72c] text-[#9a6700] flex items-center gap-1 bg-[#FFF8DB]"><i class="fa-regular fa-life-ring"></i>HELP WANTED</span>
             </div>
             <div class="mt-auto text-[11px] text-gray-400">
                 <p>#${id} by ${author}</p>
@@ -149,7 +148,7 @@ if (searchInput) {
         // Display the newly filtered list
         displayIssues(searchedData);
 
-        // Optional: Reset the filter buttons visually so it's clear we are searching ALL issues
+ 
         const activeClass = "bg-[#4B00FF] text-white px-6 py-1.5 rounded-md text-sm font-medium transition-colors";
         const inactiveClass = "text-gray-600 hover:bg-gray-50 px-6 py-1.5 rounded-md text-sm font-medium border border-transparent hover:border-gray-200 transition-colors";
         
@@ -159,5 +158,5 @@ if (searchInput) {
     });
 }
 
-// 4. Run the function automatically
+
 loadIssues();
