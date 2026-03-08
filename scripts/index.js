@@ -131,32 +131,7 @@ const displayIssues = (issues) => {
         issuesContainer.appendChild(card);
     });
 }
-const searchInput = document.getElementById('search-input');
 
-if (searchInput) {
-    // Listen for every time the user types a key in the search box
-    searchInput.addEventListener('input', (event) => {
-        // Get what the user typed and make it lowercase so the search isn't case-sensitive
-        const searchTerm = event.target.value.toLowerCase().trim();
-
-        // Filter the global array to only include issues where the title includes the search term
-        const searchedData = globalIssues.filter(issue => {
-            const title = (issue.title || '').toLowerCase();
-            return title.includes(searchTerm);
-        });
-
-        // Display the newly filtered list
-        displayIssues(searchedData);
-
- 
-        const activeClass = "bg-[#4B00FF] text-white px-6 py-1.5 rounded-md text-sm font-medium transition-colors";
-        const inactiveClass = "text-gray-600 hover:bg-gray-50 px-6 py-1.5 rounded-md text-sm font-medium border border-transparent hover:border-gray-200 transition-colors";
-        
-        document.getElementById('btn-all').className = activeClass;
-        document.getElementById('btn-open').className = inactiveClass;
-        document.getElementById('btn-closed').className = inactiveClass;
-    });
-}
 
 
 loadIssues();
