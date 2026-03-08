@@ -105,9 +105,12 @@ const displayIssues = (issues) => {
             priorityBadge = `<span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded-full uppercase">LOW</span>`;
         }
 
-        const card = document.createElement('div');
-        card.className = `border border-gray-200 rounded-lg p-4 border-t-4 ${borderColor} flex flex-col hover:shadow-md transition-shadow bg-white`;
-        
+    const card = document.createElement('div');
+    // Added 'cursor-pointer' so the mouse turns into a hand when hovering
+        card.className = `border border-gray-200 rounded-lg p-4 border-t-4 ${borderColor} flex flex-col hover:shadow-md transition-shadow bg-white cursor-pointer`;
+    // When clicked, send this specific issue's data to the openModal function
+        card.onclick = () => openModal(issue);
+
         card.innerHTML = `
 <div class="flex justify-between items-center mb-3">
                 ${isClosed 
@@ -131,7 +134,81 @@ const displayIssues = (issues) => {
         issuesContainer.appendChild(card);
     });
 }
+const searchInput = document.getElementById('search-input');
 
+if (searchInput) {
+    // Listen for every time the user types a key in the search box
+    searchInput.addEventListener('input', (event) => {
+        // Get what the user typed and make it lowercase so the search isn't case-sensitive
+        const searchTerm = event.target.value.toLowerCase().trim();
+
+        // Filter the global array to only include issues where the title includes the search term
+        const searchedData = globalIssues.filter(issue => {
+            const title = (issue.title || '').toLowerCase();
+            return title.includes(searchTerm);
+        });
+
+        // Display the newly filtered list
+        displayIssues(searchedData);
+
+ 
+        const activeClass = "bg-[#4B00FF] text-white px-6 py-1.5 rounded-md text-sm font-medium transition-colors";
+        const inactiveClass = "text-gray-600 hover:bg-gray-50 px-6 py-1.5 rounded-md text-sm font-medium border border-transparent hover:border-gray-200 transition-colors";
+        
+        document.getElementById('btn-all').className = activeClass;
+        document.getElementById('btn-open').className = inactiveClass;
+        document.getElementById('btn-closed').className = inactiveClass;
+    });
+}
+const openModal = (issue) => {
+    // 1. Get the modal elements
+    const modal = document.getElementById('issue-modal');
+    
+    // 2. Extract data safely (just like we did for the cards)
+    const title = issue.title || 'Untitled Issue';
+    const desc = issue.description || 'No description provided.';
+    const status = (issue.status || 'open').toLowerCase();
+    const priority = (issue.priority || 'low').toUpperCase();
+    const author = issue.author || 'User'; 
+    const date = issue.date || '1/15/2024';
+    const assignee = issue.assignee || author; // Fallback to author if no assignee
+
+    // 3. Populate text elements
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-desc').innerText = desc;
+    document.getElementById('modal-author').innerText = author;
+    document.getElementById('modal-date').innerText = date;
+    document.getElementById('modal-assignee').innerText = assignee;
+
+    // 4. Set Status Badge colors
+    const statusBadge = document.getElementById('modal-status-badge');
+    if (status === 'closed') {
+        statusBadge.innerText = 'Closed';
+        statusBadge.className = 'px-3 py-1 rounded-full text-white text-xs font-semibold bg-[#8250df]';
+    } else {
+        statusBadge.innerText = 'Opened';
+        statusBadge.className = 'px-3 py-1 rounded-full text-white text-xs font-semibold bg-[#2da44e]';
+    }
+
+    // 5. Set Priority Badge
+    let priorityBadgeHTML = '';
+    if (priority === 'HIGH') {
+        priorityBadgeHTML = `<span class="bg-[#ffebe9] text-[#cf222e] text-[10px] font-bold px-2 py-1 rounded-full uppercase">HIGH</span>`;
+    } else if (priority === 'MEDIUM') {
+        priorityBadgeHTML = `<span class="bg-[#fff8c5] text-[#9a6700] text-[10px] font-bold px-2 py-1 rounded-full uppercase">MEDIUM</span>`;
+    } else {
+        priorityBadgeHTML = `<span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded-full uppercase">LOW</span>`;
+    }
+    document.getElementById('modal-priority').innerHTML = priorityBadgeHTML;
+
+    // 6. Reveal the modal by removing the 'hidden' class
+    modal.classList.remove('hidden');
+}
+
+const closeModal = () => {
+    // Hide the modal by adding the 'hidden' class back
+    document.getElementById('issue-modal').classList.add('hidden');
+}
 
 
 loadIssues();

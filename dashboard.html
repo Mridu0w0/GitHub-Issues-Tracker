@@ -60,6 +60,40 @@
                 </div>
         </div>
     </div>
+    <div id="issue-modal" onclick="closeModal()" class="fixed inset-0 bg-[rgba(15,23,42,0.6)] z-50 hidden flex items-center justify-center backdrop-blur-sm transition-all">
+        <div onclick="event.stopPropagation()" class="bg-white rounded-lg p-8 w-full max-w-2xl mx-4 relative shadow-2xl">
+            
+            <h2 id="modal-title" class="text-2xl font-bold mb-3 text-gray-900">Issue Title</h2>
+            
+            <div class="flex items-center gap-2 mb-4 text-sm text-gray-500">
+                <span id="modal-status-badge" class="px-3 py-1 rounded-full text-white text-xs font-semibold">Status</span>
+                <span>• Opened by <span id="modal-author" class="font-medium">Author</span> • <span id="modal-date">Date</span></span>
+            </div>
+            
+            <div id="modal-labels" class="flex gap-2 mb-6 text-[10px] font-semibold flex-wrap">
+                <span class="px-2 py-1 rounded-full border border-[#ff8182] text-[#cf222e] flex items-center gap-1 bg-[#ffebe9]">🐞 BUG</span>
+                <span class="px-2 py-1 rounded-full border border-[#d4a72c] text-[#9a6700] flex items-center gap-1 bg-[#fff8c5]">🤝 HELP WANTED</span>
+            </div>
+
+            <p id="modal-desc" class="text-gray-600 text-sm mb-8 leading-relaxed">Description goes here...</p>
+
+            <div class="flex gap-16 bg-gray-50 p-5 rounded-lg mb-8 border border-gray-100">
+                <div>
+                    <p class="text-gray-500 text-xs mb-1">Assignee:</p>
+                    <p id="modal-assignee" class="font-bold text-sm text-gray-900">Unassigned</p>
+                </div>
+                <div>
+                    <p class="text-gray-500 text-xs mb-1">Priority:</p>
+                    <div id="modal-priority">
+                        </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end">
+                <button onclick="closeModal()" class="bg-[#4B00FF] hover:bg-[#3b00c9] text-white px-8 py-2.5 rounded-md text-sm font-semibold transition-colors shadow-sm">Close</button>
+            </div>
+        </div>
+    </div>
 
     <script src="./scripts/index.js"></script>  
     
