@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="./assets/Aperture.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css"> 
+</head>
+<body class="min-h-screen pb-10">
+
+    <nav class="bg-white border-b border-gray-200 px-6 py-3 flex justify-between items-center sticky top-0 z-10">
+        <div class="flex items-center gap-3">
+            <i class="fa-brands fa-github text-4xl"></i>
+            <span class="text-lg font-bold text-gray-900">GitHub Issues Tracker</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative">
+                <svg class="w-4 h-4 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <input id="search-input" type="text" placeholder="Search issues..." class="pl-9 pr-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-[#4B00FF] focus:border-[#4B00FF] w-64">            </div>
+            <button class="bg-[#4B00FF] hover:bg-[#3b00c9] text-white px-4 py-2 rounded-md text-sm font-semibold transition-colors flex items-center gap-2">
+                <span>+</span> New Issue
+            </button>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-6 mt-8">
+        
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6 flex gap-2 w-max">
+            <button id="btn-all" onclick="filterIssues('all')" class="bg-[#4B00FF] text-white px-6 py-1.5 rounded-md text-sm font-medium transition-colors">All</button>
+            <button id="btn-open" onclick="filterIssues('open')" class="text-gray-600 hover:bg-gray-50 px-6 py-1.5 rounded-md text-sm font-medium border border-transparent hover:border-gray-200 transition-colors">Open</button>
+            <button id="btn-closed" onclick="filterIssues('closed')" class="text-gray-600 hover:bg-gray-50 px-6 py-1.5 rounded-md text-sm font-medium border border-transparent hover:border-gray-200 transition-colors">Closed</button>
+        </div>
+
+
+        <div class="bg-white rounded-t-lg shadow-sm border border-gray-200 p-6 flex justify-between items-center border-b-0">
+            <div class="flex items-center gap-4">
+                <div class="bg-[#f3f0ff] p-3 rounded-full text-[#4B00FF]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <div>
+                    <h2 id="issue-count" class="text-xl font-bold text-gray-900">Loading Issues...</h2>
+                    <p class="text-sm text-gray-500">Track and manage your project issues</p>
+                </div>
+            </div>
+            <div class="flex gap-4 text-sm font-medium text-gray-700">
+                <span class="flex items-center gap-1.5"><div class="w-2.5 h-2.5 rounded-full bg-[#2da44e]"></div> Open</span>
+                <span class="flex items-center gap-1.5"><div class="w-2.5 h-2.5 rounded-full bg-[#8250df]"></div> Closed</span>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-b-lg shadow-sm border border-gray-200 p-6">
+            <div id="issues-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                </div>
+        </div>
+    </div>
+
+    <script src="./scripts/index.js"></script>  
+    
+</body>
+</html>

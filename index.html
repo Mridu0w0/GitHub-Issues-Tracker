@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn</title>
+    <link rel="shortcut icon" href="./assets/Aperture.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css"> 
+
+</head>
+<body class="bg-[#f8f9fa] min-h-screen flex items-center justify-center p-4">
+
+<div class="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] w-full max-w-md p-10">
+        
+        <div class="flex justify-center mb-6">
+            <img src="./assets/github-logo.png" alt="">
+        </div>
+
+        <h1 class="text-2xl font-bold text-center text-[#1f2328] mb-2 tracking-tight">GitHub Issues Tracker</h1>
+        <p class="text-center text-[#656d76] text-[15px] mb-8">Sign in to manage your issues</p>
+
+        <form class="space-y-5">
+            <div>
+                <label class="block text-[14px] font-medium text-[#1f2328] mb-2">Username</label>
+                <input id="username" type="text" placeholder="Enter Username" class="w-full px-4 py-2.5 rounded-lg border border-[#e1e4e8] text-[#1f2328] placeholder-[#9ca3af] focus:outline-none focus:border-[#4B00FF] focus:ring-1 focus:ring-[#4B00FF] transition-colors">
+                <p class="text-[13px] text-[#4B00FF] mt-1.5">Default: admin</p>
+            </div>
+
+            <div>
+                <label class="block text-[14px] font-medium text-[#1f2328] mb-2">Password</label>
+                <input id="password" type="password" placeholder="Enter Password" class="w-full px-4 py-2.5 rounded-lg border border-[#e1e4e8] text-[#1f2328] placeholder-[#9ca3af] focus:outline-none focus:border-[#4B00FF] focus:ring-1 focus:ring-[#4B00FF] transition-colors">
+                <p class="text-[13px] text-[#4B00FF] mt-1.5">Default: admin123</p>
+            </div>
+
+            <p id="error-msg" class="text-red-500 text-sm hidden">Invalid credentials. Please try again.</p>
+
+            <button type="button" onclick="handleLogin()" id="loginBtn" class="w-full bg-[#4B00FF] hover:bg-[#3b00c9] text-white font-semibold py-3 rounded-lg transition-colors mt-2 text-[15px]">
+                Sign In
+            </button>
+        </form>
+
+        <div class="flex items-center my-6">
+            <div class="flex-grow border-t border-[#e5e7eb]"></div>
+            <span class="px-4 text-[#4b5563] text-[14px]">OR</span>
+            <div class="flex-grow border-t border-[#e5e7eb]"></div>
+        </div>
+
+        <div class="bg-[#f8f9fa] rounded-lg p-6 flex flex-col items-center">
+            <p class="text-[#6b7280] text-[14px] mb-3">Demo Credentials:</p>
+            <div class="text-[#1f2328] text-[15px] flex flex-col items-center space-y-0.5">
+                <p><span class="font-bold">Username:</span> admin</p>
+                <p><span class="font-bold">Password:</span> admin123</p>
+            </div>
+        </div>
+
+    </div>
+    <script src="./scripts/login.js"></script>
+</body>
+</html>
