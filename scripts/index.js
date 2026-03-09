@@ -123,7 +123,7 @@ const displayIssues = (issues) => {
             <div class="flex justify-between items-center mb-3">
                 ${isClosed 
                     ? '<img src="../assets/Closed- Status .png" alt="Closed" class="w-5 h-5">' 
-                    : '<img src="../assets/Open-Status.png" alt="Open" class="w-5 h-5">'
+                    : '<img src="../assets/Open-Status.png alt="Open" class="w-5 h-5">'
                 }
                 ${priorityBadge}
             </div>
