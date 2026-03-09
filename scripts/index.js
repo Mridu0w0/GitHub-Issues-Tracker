@@ -119,11 +119,11 @@ const displayIssues = (issues) => {
         card.className = `border border-gray-200 rounded-lg p-4 border-t-4 ${borderColor} flex flex-col hover:shadow-md transition-shadow bg-white cursor-pointer`;
         card.onclick = () => openModal(issue);
 
-        card.innerHTML = `
+       card.innerHTML = `
             <div class="flex justify-between items-center mb-3">
                 ${isClosed 
-                    ? '<img src="../assets/Closed-status.png" alt="Closed" class="w-5 h-5">' 
-                    : '<img src="../assets/Open-status.png" alt="Open" class="w-5 h-5">'
+                    ? '<img src="./assets/closed-status.png" alt="Closed" class="w-5 h-5">' 
+                    : '<img src="./assets/open-status.png" alt="Open" class="w-5 h-5">'
                 }
                 ${priorityBadge}
             </div>
